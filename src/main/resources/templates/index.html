@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Main</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="/web/js/passwordLength.js"></script>
+  <script src="/web/js/ageRange.js"></script>
+  <script src="/web/js/numberOfPeople.js"></script>
+  <script src="/web/js/example.js"></script>
+  <link rel="stylesheet" href="/web/css/main.css">
+</head>
+<body>
+
+
+<div class="side-menu">
+  <div class="top-side">
+  <h2>Choose Properties</h2>
+
+  <form>
+    <label for="passwordLength">Password Length:</label>
+    <div class="form-item">
+      <input type="range" id="passwordLength" name="passwordLength" min="6" max="20" value="8">
+      <span id="passwordLengthValue">8</span>
+    </div>
+  </form>
+
+  <form>
+    <label for="minAge">Minimum Age:</label>
+    <div class="form-item">
+      <input type="range" id="minAge" name="minAge" min="0" max="100" value="18">
+      <span id="minAgeValue">0</span>
+    </div>
+    <label for="maxAge">Maximum Age:</label>
+    <div class="form-item">
+      <input type="range" id="maxAge" name="maxAge" min="0" max="100" value="80" oninput="validateAgeRange()">
+      <span id="maxAgeValue">100</span>
+    </div>
+  </form>
+
+  <form>
+    <label for="numberOfPeople">Number of People:</label>
+    <div class="form-item">
+      <input type="number" id="numberOfPeople" name="numberOfPeople" min="1" max="1000" value="100">
+    </div>
+  </form>
+  </div>
+
+  <div class="bottom-side">
+    <h2>Generate Random Data</h2>
+
+  <form>
+    <a class="csv-button" th:href="@{/generate-csv}" download>
+      <i class="fa fa-download"></i>Download CSV
+    </a>
+    <a class="excel-button" th:href="@{/generate-xlsx}" download>
+      <i class="fa fa-download"></i>Download Excel
+    </a>
+  </form>
+ </div>
+</div>
+
+
+<div class="content">
+
+
+  <div class="Regenerate">
+
+    <img id="gender-image" src="">
+
+    <button id="regenerate-btn"></button>
+
+  </div>
+
+  <div class="Essentials">
+    <h3>Essentials</h3>
+<p>Name: <span th:text="${name}" id="name"></span></p>
+<p>Surname: <span th:text="${surname}" id="surname"></span></p>
+<p>TcNo: <span th:text="${tcno}" id="tcno"></span></p>
+<p>Age: <span th:text="${age}" id="age"></span></p>
+<p>Date of Birth: <span th:text="${dateOfBirth}" id="dateOfBirth"></span></p>
+  </div>
+
+  <div class="Personal">
+    <h3>Personal</h3>
+<p>Email: <span th:text="${email}" id="email" ></span></p>
+<p>Password: <span th:text="${password}" id="password"></span></p>
+<p>Phone Number: <span th:text="${phoneNumber}" id="phoneNumber"></span></p>
+<p>Gender: <span th:text="${gender}" id="gender"></span></p>
+<p>Height: <span th:text="${height}" id="height"></span> cm</p>
+<p>Weight: <span th:text="${weight}" id="weight"></span> kg</p>
+  </div>
+
+  <div class="Address">
+    <h3>Address</h3>
+<p>City: <span th:text="${city}" id="city"></span></p>
+<p>City Code: <span th:text="${citycode}" id="citycode"></span></p>
+<p>District: <span th:text="${district}" id="district"></span></p>
+<p>Neighborhood: <span th:text="${neighborhood}" id="neighborhood"></span></p>
+<p>Address: <span th:text="${address}" id="address"></span></p>
+<p>Region: <span th:text="${region}" id="region"></span></p></div>
+</div>
+
+<div class="info">
+
+<p> This mini-program produces random fictional data suited for Turkey. </p>
+<p> The names and the surnames are coming from a database storing Turkish names. </p>
+<p> The gender of the randomly selected indivigual is selected with 50% probability.</p>
+<p> The TcNo is the Turkish identity number, and it is generated with respect to its real algorithm.</p>
+<p> The age is generated randomly according to the statistical distribution of the Turkish demography, the birthday is again calculating due to age. For the general data you select the age range of your data from the left menu.</p>
+<p> The password is set totally randomly. The length can be arranged from the left menu.</p>
+<p> The height and the weight of an individual is determined randomly according to a Gaussian distribution with proper median and standart deviation suited for Turkish adults. For the children, medical data is used to determine median and standart deviation based on the age and gender.</p>
+<p> The probabilities regarding the cities derived using the real population distribution of Turkey.</p>
+<p> After a city is randomly selected with respect to its relative population, a corresponding district and neighborhood is selected.</p>
+
+</div>
+
+</body>
+</html>
