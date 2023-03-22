@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 
 import java.io.InputStream;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Map;

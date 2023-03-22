@@ -1,6 +1,8 @@
 package com.demir.FakeDataGeneratorWeb.Generators.Fundamentals;
 
 
+import com.demir.FakeDataGeneratorWeb.FakeDataGeneratorWebApplication;
+
 import java.sql.Statement;
 import java.sql.*;
 import java.util.Random;
@@ -18,7 +20,7 @@ public class GenerateNames {
         Random random = new Random();
 
         // Connection to database.
-        connection = DriverManager.getConnection("jdbc:h2:~/NameRepo".replace("~",System.getProperty("user.home")));
+        connection = DriverManager.getConnection("jdbc:h2:~/src/main/resources/databases/nameRepo".replace("~",System.getProperty("user.dir")));
 
         // Create a statement.
         stmt = connection.createStatement();

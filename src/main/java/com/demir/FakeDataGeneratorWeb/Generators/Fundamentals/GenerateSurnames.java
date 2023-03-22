@@ -12,7 +12,7 @@ public class GenerateSurnames {
         String surname = null;
 
         // Connection to database.
-        connection = DriverManager.getConnection("jdbc:h2:~/SurnameRepo".replace("~",System.getProperty("user.home")));
+        connection = DriverManager.getConnection("jdbc:h2:~/src/main/resources/databases/surnameRepo".replace("~",System.getProperty("user.dir")));
         // Create a statement.
         stmt = connection.createStatement();
 
